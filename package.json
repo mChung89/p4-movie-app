@@ -1,6 +1,6 @@
 {
-  "name": "phase-4-deploying-app-demo",
-  "description": "Build scripts for Heroku",
+  "name": "phase-4-movie-app",
+  "description": "Movie recommendation App",
   "engines": {
     "node": "16.x"
   },
