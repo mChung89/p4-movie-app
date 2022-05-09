@@ -1,5 +1,5 @@
 import NavBar from "./NavBar";
-import { Routes, Route, useParams, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import MoviePage from "./MoviePage";
 import MovieDetail from "./MovieDetail";
 

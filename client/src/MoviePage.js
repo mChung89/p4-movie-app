@@ -21,7 +21,7 @@ function MoviePage() {
 
   return (
     <div className="cards" id="card-container">
-      {movies?.results?.map((movie) => <MovieCard movie={movie} />)}
+      {movies?.results?.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
       <Outlet />
     </div>
   );
