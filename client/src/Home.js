@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 export default function Home () {
     const [user, setUser] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3000/me")
+        fetch("/me")
         .then(res => res.json())
         .then(setUser)
     },[])
