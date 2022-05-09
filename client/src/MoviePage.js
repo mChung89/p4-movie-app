@@ -1,23 +1,28 @@
-import MovieCard from "./MovieCard";
 import "./styles/card.css";
+import MovieCard from "./MovieCard";
 import { useEffect, useState } from "react";
+import { Outlet } from 'react-router-dom'
 
 function MoviePage() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/movie/now_playing?api_key=807ad8ee75e52c8f78d64e223447c1b2"
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
     )
       .then((res) => res.json())
-      .then((data) => setMovies(data));
-  }, []);
+      .then((data) => setMovies(data))
+      .catch(err => console.log(err));
+  }, [])
+
+
 
 //   console.log(renderedMovies);
 
   return (
     <div className="cards" id="card-container">
-      {movies.results.map((movie) => <MovieCard movie={movie} />)}
+      {movies?.results?.map((movie) => <MovieCard movie={movie} />)}
+      <Outlet />
     </div>
   );
 }

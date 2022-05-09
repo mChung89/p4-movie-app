@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 function MovieCard ({ movie }) {
     const { title, poster_path, release_date } = movie
+    const navigate = useNavigate()
 
     function handleClick () {
-
+        navigate(`/movies/${movie.id}`)
     }
 
 
