@@ -6,6 +6,8 @@ class CreateMovies < ActiveRecord::Migration[6.1]
       t.float :rating
       t.text :description
       t.string :image
+      t.integer :movie_id
+      
 
       t.timestamps
     end
