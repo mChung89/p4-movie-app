@@ -1,3 +1,13 @@
 body {
     font-family: 'Catamaran', sans-serif;
 }
+
+.grid-wrapper {
+    height: 100%;
+    display: grid
+}
+
+/* .content-wrap {
+    padding-top: 2rem;
+    padding-bottom: 2rem
+} */
