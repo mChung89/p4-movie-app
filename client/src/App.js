@@ -2,10 +2,17 @@ import NavBar from "./NavBar";
 import { Routes, Route } from "react-router-dom";
 import MoviePage from "./MoviePage";
 import MovieDetail from "./MovieDetail";
+
+import Watchlist from "./Watchlist";
+
+
 import Login from './Login'
 import Home from './Home'
 
+
 function App() {
+
+  
   return (
     <div className="grid-wrapper" style={{width: "100%"}}>
       <NavBar />
@@ -13,7 +20,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route exact path="movies" element={<MoviePage />}/>
-        <Route exact path="/movies/:movieId" element={<MovieDetail />}></Route>
+        <Route exact path="/movies/:movieId" element={<MovieDetail/>}></Route>
+        <Route path='/watchlist' element={<Watchlist/>}/>
         <Route path="*" element={<h1>404 No page found!</h1>} />
         <Route path='login' element={<Login />}/>
       </Routes>

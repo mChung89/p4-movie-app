@@ -7,6 +7,7 @@ function NavBar () {
         <nav className="topnav">
           <Link to="/">Home</Link>
           <Link to="/movies">Movies</Link>
+          <Link to='/Watchlist'>Watchlist</Link>
           <Link id="login" to="/login">Login</Link>
         </nav>
         <Outlet />
