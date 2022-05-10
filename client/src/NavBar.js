@@ -8,7 +8,7 @@ function NavBar ({ user,setUser }) {
     .then(data => setUser(null))
   }
   
-  const logButton = user ? <button className="login-button"onClick={handleClick}>Log out</button> : <Link id="login-button" to="/login">Login</Link>
+  const logButton = user ? <a className="login-button" onClick={handleClick}>Log out</a> : <Link className="login-button" to="/login">Login</Link>
     return (
       <div className="nav">
         <nav className="topnav">

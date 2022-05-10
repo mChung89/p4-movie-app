@@ -24,6 +24,6 @@
     position: sticky;
 }
 
-#login {
+nav .login-button {
     float: right
 }

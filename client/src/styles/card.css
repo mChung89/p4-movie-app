@@ -28,7 +28,9 @@
 .card:hover {
     transform: scale(1.05)
 }
-
+.card-text {
+    height: 20%
+}
 .card img {
     width: 375px;
 }

@@ -1,0 +1,61 @@
+div .detail-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 1em auto;
+    padding: 0, 2em;
+    height: 90vh
+}
+
+div #detail-image-box img {
+    max-height: 85vh
+}
+
+#movie-details h1 {
+    font-family: 'Bangers', cursive;
+    font-size: 60;
+    text-align: center
+}
+
+#movie-details h5 {
+    padding-top: 10em;
+    height: 10vh
+}
+
+#movie-stats {
+    height: 25vh;
+    display: flex;
+    flex-direction: row;
+    align-content: center
+}
+#movie-details-left {
+    float: left;
+    padding: 0em, 2em;
+    width: 30vw
+}
+
+#movie-details-right {
+    float: right;
+}
+
+#movie-details-right p {
+    align-self:auto
+}
+
+div #movie-details {
+    margin-left: 2em
+}
+
+div #similar-movies {
+    display: inline-flex;
+    white-space: nowrap;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y:hidden;
+    height: 26vh;
+    width: 65vw;
+    border: solid black 1px;
+    background-color: black;
+    cursor: grab;
+}
+

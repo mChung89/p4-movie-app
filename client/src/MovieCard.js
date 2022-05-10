@@ -8,11 +8,11 @@ function MovieCard ({ movie }) {
     function handleClick () {
         navigate(`/movies/${movie.id}`)
     }
-
+    console.log(movie)
 
     return (
         <div className='card'>
-            <h1>{title}</h1>
+            <h1 className="card-text">{title}</h1>
             <img onClick={handleClick} src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title}></img>
             <h2>{release_date}</h2>
         </div>
