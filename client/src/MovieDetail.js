@@ -4,12 +4,7 @@ import "./styles/moviedetail.css";
 import MiniMovieCard from "./MiniMovieCard";
 
 function MovieDetail({user}) {
-  const [movie, setmovie] = useState({})
- 
-
-
-
-
+  const [movie, setMovie] = useState({})
 
   let params = useParams();
  

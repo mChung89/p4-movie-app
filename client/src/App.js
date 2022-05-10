@@ -13,8 +13,6 @@ import Home from './Home'
 
 
 function App() {
-
-
   const [user, setUser] = useState(null)
     useEffect(() => {
         fetch("/me")
@@ -30,9 +28,6 @@ function App() {
     },[])
 
     console.log(user)
-  
-  const [user, setUser] = useState(null)
-
   return (
 
     <>
@@ -54,7 +49,6 @@ function App() {
         <Route path='login' element={<Login setUser={setUser}/>}/>
       </Routes>
       </div>
-      </>)
      
       
       
