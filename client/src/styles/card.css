@@ -13,7 +13,6 @@
     flex-wrap: wrap
 }
 
-
 .card {
     margin: 2em;
     text-align: center;
@@ -23,8 +22,16 @@
     border: solid 2px;
     flex-direction: column;
     transition: 0.5s;
-  }
+    background-color: rgba(255,255,255,0.7);
+    -webkit-animation: fadeinout 4s linear forwards;
+    animation: fadeinout 4s linear 1 forwards;
+}
 
+@keyframes fadeinout {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+
+}
 .card:hover {
     transform: scale(1.05)
 }

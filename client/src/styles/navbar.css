@@ -1,6 +1,7 @@
 .topnav {
     background-color: crimson;
-    overflow: hidden
+    overflow: hidden;
+    height:60px;
 }
 
 .topnav a {
@@ -24,9 +25,14 @@
 }
 
 .nav {
-    position: sticky;
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    z-index: 2;
 }
 
 nav .login-button {
-    float: right
+    float: right;
+    padding-right: 40px
 }

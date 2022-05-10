@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import "./styles/moviedetail.css";
 import MiniMovieCard from "./MiniMovieCard";
@@ -59,6 +59,28 @@ function MovieDetail({ user }) {
 
   const genres = movie?.genres?.map((genre) => genre.name).join(" ");
 
+  // Horizontal Scrolling
+  const elRef = useRef();
+  function useHorizontalScroll() {
+    useEffect(() => {
+      const el = elRef.current;
+      if (el) {
+        const onWheel = e => {
+          if (e.deltaY == 0) return;
+          e.preventDefault();
+          el.scrollTo({
+            left: el.scrollLeft + e.deltaY,
+            behavior: "smooth"
+          });
+        };
+        el.addEventListener("wheel", onWheel);
+        return () => el.removeEventListener("wheel", onWheel);
+      }
+    }, []);
+    return elRef;
+  }
+  const scrollRef = useHorizontalScroll()
+
   return (
     <div className="detail-wrap">
       <div id="detail-image-box">
@@ -87,7 +109,7 @@ function MovieDetail({ user }) {
         <div id="similar-movie-text">
           <h4>Similar movies:</h4>
         </div>
-        <div id="similar-movies">{similarMovies}</div>
+        <div ref={scrollRef} id="similar-movies">{similarMovies}</div>
       </div>
     </div>
   );

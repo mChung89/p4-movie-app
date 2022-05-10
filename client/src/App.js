@@ -33,13 +33,8 @@ function App() {
     <>
     
     <div className="grid-wrapper" style={{width: "100%"}}>
-
-     
-      
-
       <NavBar user={user} setUser={setUser}/>
-
-      <div className="content-wrap">
+      <div className="content-wrap" style={{'padding-top':'60px',"z-index": 1}}>
       <Routes>
         <Route path="/" element={<Home setUser={setUser} user={user}/>} />
         <Route exact path="movies" element={<MoviePage />}/>
