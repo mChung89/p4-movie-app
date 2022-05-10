@@ -3,7 +3,7 @@ import UserCreate from "./UserCreate";
 import UserLogin from "./UserLogin";
 import { useState } from "react";
 
-function Login() {
+function Login({setUser}) {
   const [newUser, setNewUser] = useState(true);
   return (
     <div className="login">
@@ -11,7 +11,7 @@ function Login() {
         <h1>Welcome! Please sign in</h1>
       </div>
       <div className="login-form">
-        {newUser ? <UserLogin /> : <UserCreate />}
+        {newUser ? <UserLogin setUser={setUser}/> : <UserCreate setUser={setUser}/>}
         <button onClick={() => setNewUser((prev) => !prev)}>
           {newUser ? "New User? Create an Account" : "Already a User? Login!" }
         </button>

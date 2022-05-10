@@ -1,20 +1,38 @@
-.cards {
+/* .cards {
     align-items: center;
     max-width: 100%;
     margin: 0 auto;
     display: grid;
-    grid-gap: 1rem
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+
+} */
+
+.cards {
+    display: flex;
+    flex-wrap: wrap
 }
 
 
 .card {
-    grid-column:auto;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    display: grid;
+    margin: 2em;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    width: 400px;
     border: solid 2px;
-    flex-direction: column
+    flex-direction: column;
+    transition: 0.5s;
   }
 
-@media (min-width: 600px) {
-    .cards { grid-template-columns: repeat(3,1fr)}
+.card:hover {
+    transform: scale(1.05)
+}
+
+.card img {
+    width: 375px;
+}
+
+.card img:hover {
+    cursor: pointer;
 }

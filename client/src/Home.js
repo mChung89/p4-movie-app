@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react'
-export default function Home () {
-    const [user, setUser] = useState([])
+import { useEffect } from 'react'
+export default function Home ({ user, setUser }) {
     useEffect(() => {
         fetch("/me")
-        .then(res => res.json())
-        .then(setUser)
-    },[])
+        .then(res => res.ok ? res.json().then(setUser) : console.log("not ok"))
+    },[setUser])
 
     console.log(user)
     

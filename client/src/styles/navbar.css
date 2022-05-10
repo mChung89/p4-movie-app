@@ -1,5 +1,5 @@
 .topnav {
-    background-color: red;
+    background-color: crimson;
     overflow: hidden
 }
 
@@ -18,6 +18,10 @@
 .topnav a.active {
     background-color: #04AA6D;
     color: white;
+}
+
+.nav {
+    position: sticky;
 }
 
 #login {
