@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   resources :reviews
   resources :users, only: [:index, :create]
 
-  resources :movies, only: [:create, :index]
-=======
   resources :movies
   post '/login', to: 'sessions#create'
   get '/me', to: 'users#show'
