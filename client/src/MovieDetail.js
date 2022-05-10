@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 import "./styles/moviedetail.css";
 import MiniMovieCard from "./MiniMovieCard";
 
-function MovieDetail({user}) {
-  const [movie, setMovie] = useState({})
+function MovieDetail({ user }) {
+  const [movie, setMovie] = useState({});
 
   let params = useParams();
- 
-  console.log(user)
+
+  console.log(user);
 
   useEffect(() => {
     fetch(
@@ -38,25 +38,26 @@ function MovieDetail({user}) {
         image: movie.poster_path,
       }),
     })
-
-    .then(res => res.json())
-    .then((moviedata)=> {
-      fetch('http://127.0.0.1:3000/reviews',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({user_id: user.id, movie_id: moviedata.id, rating: null, review: "" })
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
-    })
-
-
+      .then((res) => res.json())
+      .then((moviedata) => {
+        fetch("http://127.0.0.1:3000/reviews", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_id: user.id,
+            movie_id: moviedata.id,
+            rating: null,
+            review: "",
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
+      });
   }
 
-  const genres = movie?.genres?.map(genre => genre.name).join(' ')
-
+  const genres = movie?.genres?.map((genre) => genre.name).join(" ");
 
   return (
     <div className="detail-wrap">
@@ -70,7 +71,8 @@ function MovieDetail({user}) {
         <div id="movie-details">
           <h1>{movie.title}</h1>
           <h4>{movie.overview}</h4>
-          <div id='movie-stats'>
+        </div>
+        <div id="movie-stats">
           <div id="movie-details-left">
             <p>Runtime: {movie.runtime} minutes</p>
             <p>Ratings: {movie.vote_average}/10</p>
@@ -81,14 +83,11 @@ function MovieDetail({user}) {
             <p>Release Date: {movie.release_date}</p>
             <button onClick={addToList}>Add to Watchlist</button>
           </div>
-          </div>
-          <div id='similar-movie-text'>
-            <h4>Similar movies</h4>
-          </div>
-          <div id="similar-movies">
-            {similarMovies}
-          </div>
         </div>
+        <div id="similar-movie-text">
+          <h4>Similar movies:</h4>
+        </div>
+        <div id="similar-movies">{similarMovies}</div>
       </div>
     </div>
   );

@@ -17,13 +17,17 @@ div #detail-image-box img {
     text-align: center
 }
 
+#movie-details h4 {
+    height: 15vh
+}
+
 #movie-details h5 {
     padding-top: 10em;
     height: 10vh
 }
 
 #movie-stats {
-    height: 25vh;
+    height: 22.5vh;
     display: flex;
     flex-direction: row;
     align-content: center
@@ -31,11 +35,13 @@ div #detail-image-box img {
 #movie-details-left {
     float: left;
     padding: 0em, 2em;
-    width: 30vw
+    width: 30vw;
+    margin-left: 2em
 }
 
 #movie-details-right {
     float: right;
+    text-align: center
 }
 
 #movie-details-right p {
@@ -47,6 +53,7 @@ div #movie-details {
 }
 
 div #similar-movies {
+    margin-left: 2em;
     display: inline-flex;
     white-space: nowrap;
     flex-direction: row;
@@ -57,5 +64,9 @@ div #similar-movies {
     border: solid black 1px;
     background-color: black;
     cursor: grab;
+}
+
+#similar-movie-text {
+    margin-left: 2em
 }
 
