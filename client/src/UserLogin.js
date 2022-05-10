@@ -31,7 +31,7 @@ function UserLogin({setUser}){
     .then(data => {
       setUser(data)
       setErrors("")
-      navigate('/movies')
+      navigate('/')
     }) : res.json().then(setErrors)
   )}
 
