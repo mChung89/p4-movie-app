@@ -1,7 +1,10 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function UserLogin(){
     const [username, setUsername] = useState("")
+    const [errors, setErrors] = useState("")
+    const navigate = useNavigate()
 
 const defaultState = {
     username: "",
@@ -14,10 +17,10 @@ const defaultState = {
     const value = e.target.value
     setFormData({...formData, [key]: value})
   }
-  console.log(formData)
+
   function handleSubmit (e) {
     e.preventDefault()
-    fetch(`http://localhost:3000/login`, {
+    fetch(`/login`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -25,9 +28,14 @@ const defaultState = {
       },
       body: JSON.stringify(formData)
     })
-    .then(res => res.json)
-    .then(data => console.log(data))
-  }
+    .then(res => res.ok ? res.json()
+    .then(data => {
+      setUsername(data)
+      setErrors("")
+      navigate('/movies')
+    }) : res.json().then(setErrors)
+  )}
+
   return (
       <>
       <h3>This is the login Page</h3>
@@ -41,6 +49,7 @@ const defaultState = {
         <input name="password" onChange={handleChange} value={formData.password} id="password">
         </input>
         <br></br>
+        {errors ? <p>{errors.errors}</p> : null}
         <button type="submit">Submit
         </button>
       </form>

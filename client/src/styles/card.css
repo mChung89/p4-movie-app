@@ -1,20 +1,20 @@
-/* .cards {
+.cards {
+    align-items: center;
     max-width: 100%;
     margin: 0 auto;
     display: grid;
     grid-gap: 1rem
-} */
-.grid {
+}
+
+
+.card {
+    grid-column:auto;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+    border: solid 2px;
+    flex-direction: column
   }
 
-/* .card {
-    padding: 1rem;
-    height: 1rem;
-  } */
-
-/* @media (min-width: 600px) {
+@media (min-width: 600px) {
     .cards { grid-template-columns: repeat(3,1fr)}
-} */
+}
