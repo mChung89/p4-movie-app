@@ -1,15 +1,14 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function UserLogin(){
-    const [username, setUsername] = useState("")
+function UserLogin({setUser}){
     const [errors, setErrors] = useState("")
     const navigate = useNavigate()
 
-const defaultState = {
+  const defaultState = {
     username: "",
     password: ""
-  }
+    }
   const [formData, setFormData] = useState(defaultState)
 
   function handleChange (e) {
@@ -30,7 +29,7 @@ const defaultState = {
     })
     .then(res => res.ok ? res.json()
     .then(data => {
-      setUsername(data)
+      setUser(data)
       setErrors("")
       navigate('/')
     }) : res.json().then(setErrors)

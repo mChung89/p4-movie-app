@@ -1,5 +1,5 @@
 .topnav {
-    background-color: red;
+    background-color: crimson;
     overflow: hidden
 }
 
@@ -20,6 +20,10 @@
     color: white;
 }
 
-#login {
+.nav {
+    position: sticky;
+}
+
+nav .login-button {
     float: right
 }
