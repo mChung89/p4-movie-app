@@ -32,7 +32,7 @@ const defaultState = {
     .then(data => {
       setUsername(data)
       setErrors("")
-      navigate('/movies')
+      navigate('/')
     }) : res.json().then(setErrors)
   )}
 

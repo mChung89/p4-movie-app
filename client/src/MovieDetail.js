@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-function MovieDetail() {
+function MovieDetail({user}) {
   const [movie, setmovie] = useState({})
  
   let params = useParams();
-  console.log(params);
+ 
+  console.log(user)
 
   useEffect(() => {
     fetch(
@@ -26,8 +27,17 @@ function MovieDetail() {
       body: JSON.stringify({title: movie.title, release_date: movie.release_date, description: movie.overview, rating: movie.vote_average, image: movie.poster_path})
     })
     .then(res => res.json())
+    .then((moviedata)=> {
+      fetch('http://127.0.0.1:3000/reviews',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({user_id: user.id, movie_id: moviedata.id, rating: null, review: "" })
+    })
+    .then(res => res.json())
     .then(data => console.log(data))
-    .catch((error) => console.log(error))
+    })
 
   }
   

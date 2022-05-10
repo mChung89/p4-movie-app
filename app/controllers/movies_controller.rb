@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
 
     def create
         movies = Movie.create!(movie_params)
+        render json: movies
     end
 
     private
