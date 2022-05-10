@@ -1,5 +1,6 @@
 import "./styles/card.css";
 import MovieCard from "./MovieCard";
+import OptionBar from './OptionBar'
 import { useEffect, useState } from "react";
 import { Outlet } from 'react-router-dom'
 
@@ -20,10 +21,13 @@ function MoviePage() {
 //   console.log(renderedMovies);
 
   return (
+    <>
+    <OptionBar/>
     <div className="cards" id="card-container">
       {movies?.results?.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
       <Outlet />
     </div>
+    </>
   );
 }
 
