@@ -22,7 +22,7 @@ function MoviePage() {
 
   return (
     <>
-    <OptionBar/>
+    <OptionBar setMovies={setMovies}/>
     <div className="cards" id="card-container">
       {movies?.results?.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
       <Outlet />

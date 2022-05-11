@@ -2,9 +2,11 @@ import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import "./styles/moviedetail.css";
 import MiniMovieCard from "./MiniMovieCard";
+import TrailerVideo from './TrailerVideo'
 
 function MovieDetail({ user }) {
   const [movie, setMovie] = useState({});
+  const [trailer, setTrailer] = useState("")
 
   let params = useParams();
 
@@ -14,14 +16,19 @@ function MovieDetail({ user }) {
     fetch(
       `https://api.themoviedb.org/3/movie/${params.movieId}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&append_to_response=similar`
     )
-      .then((res) => res.json())
-      .then((data) => setMovie(data));
+      .then(res => res.json())
+      .then(data => setMovie(data));
   }, [params.movieId]);
 
-  console.log(movie);
+  useEffect(() => {
+    const url = `https://imdb-api.com/API/YouTubeTrailer/${process.env.REACT_APP_IMDB_KEY}/${movie.imdb_id}`
+    fetch(url,{method: 'GET', redirect: 'follow'})
+    .then(res=>res.json())
+    .then(data => setTrailer(data.videoId))
+  },[movie])
 
   const similarMovies = movie?.similar?.results?.map((movie) => (
-    <MiniMovieCard movie={movie} />
+    <MiniMovieCard key={movie.id} movie={movie} />
   ));
 
   function addToList() {
@@ -66,7 +73,7 @@ function MovieDetail({ user }) {
       const el = elRef.current;
       if (el) {
         const onWheel = e => {
-          if (e.deltaY == 0) return;
+          if (e.deltaY === 0) return;
           e.preventDefault();
           el.scrollTo({
             left: el.scrollLeft + e.deltaY,
@@ -88,6 +95,7 @@ function MovieDetail({ user }) {
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt="img"
         ></img>
+        <TrailerVideo trailer={trailer} />
       </div>
       <div id="movie-page-right">
         <div id="movie-details">
