@@ -20,12 +20,12 @@ function MovieDetail({ user }) {
       .then(data => setMovie(data));
   }, [params.movieId]);
 
-  useEffect(() => {
-    const url = `https://imdb-api.com/API/YouTubeTrailer/${process.env.REACT_APP_IMDB_KEY}/${movie.imdb_id}`
-    fetch(url,{method: 'GET', redirect: 'follow'})
-    .then(res=>res.json())
-    .then(data => setTrailer(data.videoId))
-  },[movie])
+  // useEffect(() => {
+  //   const url = `https://imdb-api.com/API/YouTubeTrailer/${process.env.REACT_APP_IMDB_KEY}/${movie.imdb_id}`
+  //   fetch(url,{method: 'GET', redirect: 'follow'})
+  //   .then(res=>res.json())
+  //   .then(data => setTrailer(data.videoId))
+  // },[movie])
 
   const similarMovies = movie?.similar?.results?.map((movie) => (
     <MiniMovieCard key={movie.id} movie={movie} />
@@ -95,7 +95,7 @@ function MovieDetail({ user }) {
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt="img"
         ></img>
-        <TrailerVideo trailer={trailer} />
+        {/* <TrailerVideo trailer={trailer} /> */}
       </div>
       <div id="movie-page-right">
         <div id="movie-details">
