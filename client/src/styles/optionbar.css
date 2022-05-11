@@ -1,0 +1,48 @@
+#option-bar {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    position: sticky;
+    top: 60px;
+    z-index: 9;
+    font-family: Bangers, cursive;
+    height: 3em;
+    align-items:center
+}
+
+#option-bar h4 {
+    padding-left: 2em;
+    padding-right: 2em;
+    font-size: 1.5rem;
+}
+
+#option-bar input {
+    height:2rem;
+    width: 60rem;
+    font-size: 1.5rem;
+    position:relative;
+    padding-left: 20px;
+    transition: width 0.4s ease-in-out;
+}
+
+
+#option-bar button {
+    float: right;
+    background-color: crimson; /* Green */
+    border: solid black 1px;
+    color: white;
+    padding: 10px 30px;
+    margin-left: 40px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 2rem
+
+}
+
+#option-bar button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black
+}

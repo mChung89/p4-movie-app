@@ -1,14 +1,24 @@
-.video-responsive {
-    overflow: hidden;
-    padding-bottom: 56.25%;
-    position: relative;
-    height: 0;
+    .video-responsive iframe {
+    height: 250%;
+    width: 250%;
+    transform: translate(-25%, -25%);
   }
-  
-  .video-responsive iframe {
-    left: 0;
+
+  .modal-background-mask {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
     top: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
+    left: 0;
+    background: black;
+    opacity: 0.2;
+  }
+
+  .modal {
+    position: fixed;
+    display: flex;
+    top: 50vh;
+    left: 50vw;
+    background-color: #39FF14DD;
+    transform: translate(-50%, -50%);
   }

@@ -1,16 +1,5 @@
 import { useState } from 'react'
-const optionStyle = {
-    'background-color': 'white',
-    display: 'flex',
-    'flex-direction': 'row',
-    'margin-top': '20px',
-    position: 'sticky',
-    top: "60px",
-    'z-index': 9,
-    'font-family': 'Bangers, cursive',
-    padding: '2em'
-
-}
+import "./styles/optionbar.css"
 function OptionBar ({setMovies}) {
     const [searchQuery, setSearchQuery] = useState("")
 
@@ -20,13 +9,10 @@ function OptionBar ({setMovies}) {
         .then(setMovies)
     }
     return (
-        <div style={optionStyle}>
-            <h1>Search for Movies</h1>
-            <input value={searchQuery} onChange={(e) => {setSearchQuery(e.target.value)}}></input>
+        <div id="option-bar">
+            <h4>Search for Movies</h4>
+            <input placeholder="Search for Movie by Title" value={searchQuery} onChange={(e) => {setSearchQuery(e.target.value)}}></input>
             <button onClick={handleSearchSubmit}>Search!</button>
-            <select>
-                <option>Genre</option>
-            </select>
         </div>
     )
 

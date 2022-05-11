@@ -2,14 +2,23 @@ div .detail-wrap {
     width: 100%;
     display: flex;
     flex-direction: row;
-    margin: 1em auto;
-    padding: 0, 2em;
-    height: 90vh;
+    height: 100vh;
     background-color: rgba(255,255,255);
 }
 
+#movie-page-left {
+    display:flex;
+    padding-left: 1vw;
+    padding-top: 1.5vh;
+    padding-right: 2vw
+}
+#movie-page-right {
+    display:flex;
+    flex-direction:column;
+    margin-right: 2vw;
+}
 div #detail-image-box img {
-    max-height: 85vh
+    max-height: 90vh
 }
 
 #movie-details h1 {
@@ -19,30 +28,32 @@ div #detail-image-box img {
 }
 
 #movie-details h4 {
-    height: 15vh
+    height: 15vh;
+    overflow-y: scroll
 }
 
 #movie-details h5 {
     padding-top: 10em;
-    height: 10vh
+    height: 5vh;
+    padding-right:30px
 }
 
 #movie-stats {
-    height: 22.5vh;
+    height: 12vh;
     display: flex;
     flex-direction: row;
-    align-content: center
+    align-content: center;
+    padding-right:30px;
+    border-top:black 1px solid;
+    border-bottom:black 1px solid
 }
 #movie-details-left {
     float: left;
-    padding: 0em, 2em;
     width: 30vw;
-    margin-left: 2em
 }
 
 #movie-details-right {
     float: right;
-    text-align: center
 }
 
 #movie-details-right p {
@@ -50,24 +61,47 @@ div #detail-image-box img {
 }
 
 div #movie-details {
-    margin-left: 2em
+    padding-right:30px
 }
 
+#similar-movie-text {
+    margin-top: 3vh;
+    border-top: solid 1px black
+}
 div #similar-movies {
-    margin-left: 2em;
     display: inline-flex;
     white-space: nowrap;
     flex-direction: row;
     overflow-x: scroll;
     overflow-y:hidden;
-    height: 26vh;
-    width: 65vw;
+    height: 28.3vh;
+    width: 60vw;
     border: solid black 1px;
-    background-color: black;
-    cursor: grab;
+    align-items: flex-end;
+    background-color: rgba(0,0,0,0.9);
 }
 
-#similar-movie-text {
-    margin-left: 2em
+#movie-detail-buttons {
+    height: 3vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh
 }
 
+#movie-detail-buttons button {
+    background-color: crimson; /* Green */
+    border: solid black 1px;
+    color: white;
+    padding: 15px 32px;
+    margin-right: 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+}
+
+#movie-detail-buttons button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black
+}

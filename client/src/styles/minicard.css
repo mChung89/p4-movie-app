@@ -1,6 +1,8 @@
 .mini-card img {
-    height: 25vh;
-    margin-right: 1em
+    height: 26.2vh;
+    padding-right: 1em;
+    padding-left: 1em;
+    border-right: solid white 1px
 }
 
 .mini-card img:hover {
