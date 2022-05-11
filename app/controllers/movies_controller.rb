@@ -1,7 +1,9 @@
 class MoviesController < ApplicationController
     def index
-        movies = Movie.all
-        render json: movies, status: :ok
+       
+        user = User.find_by(id: session[:user_id])
+       
+        render json: user.movies.uniq, status: :ok
     end
 
     def create

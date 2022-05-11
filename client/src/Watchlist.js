@@ -2,7 +2,7 @@ import React from 'react'
 import {useEffect, useState} from 'react'
 import WatchlistCard from './WatchlistCard'
 
-function Watchlist() {
+function Watchlist({user}) {
     const [watchlist, setWatchlist] = useState([])
     useEffect(()=> {
         fetch('/movies')
@@ -10,12 +10,18 @@ function Watchlist() {
         .then(data => setWatchlist(data))
     },[])
 console.log(watchlist)
+
+const watchlistmovies = watchlist.map(list => {
+  if(list){
+    return <WatchlistCard key={list.id} movie={list} signInUser={user} setWatchlist={setWatchlist}/>
+  } else {
+    return null
+  }    
+        })
     
   return (
     <div>
-        {watchlist.map(list => {
-          return <WatchlistCard key={list.id} movie={list}/>
-        })}
+        {watchlistmovies}
     </div>
   )
 }

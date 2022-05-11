@@ -39,7 +39,7 @@ function App() {
         <Route path="/" element={<Home setUser={setUser} user={user}/>} />
         <Route exact path="movies" element={<MoviePage />}/>
         <Route exact path="/movies/:movieId" element={<MovieDetail user={user}/>}></Route>
-        <Route path='/watchlist' element={<Watchlist />}/>
+        <Route path='/watchlist' element={<Watchlist user={user}/>}/>
         <Route path="*" element={<h1>404 No page found!</h1>} />
         <Route path='login' element={<Login setUser={setUser}/>}/>
       </Routes>
