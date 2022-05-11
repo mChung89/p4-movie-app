@@ -16,10 +16,6 @@ function MoviePage() {
       .catch(err => console.log(err));
   }, [])
 
-
-
-//   console.log(renderedMovies);
-
   return (
     <>
     <OptionBar setMovies={setMovies}/>

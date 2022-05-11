@@ -55,13 +55,6 @@ function WatchlistCard({movie, signInUser, setWatchlist}) {
         }
     }
 
-    
-    
-
-console.log(movie)
-
-
-   
   return (
     <div className="watchlist">
         <h3>{movie.title}</h3>

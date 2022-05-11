@@ -8,18 +8,11 @@ export default function Home ({ user, setUser }) {
   }, [setUser]);
 
   return (
-    <section class="hero">
-      <div class="content">
-        <h2>{user ? `Welcome back ${user.username}` : `Welcome newcomer!`}</h2>
+    <section className="hero">
+      <div className="content">
+        <h2>{user ? `Welcome back ${user.username}` : `hej !`}</h2>
       </div>
-      <div class="waves"></div>
+      <div className="waves"></div>
     </section>
   );
 }
-
-//     if (user) {
-//     return <h1>Welcome, {user.username}</h1>
-//     } else {
-//         return <h1>Welcome new user!</h1>
-//     }
-// }

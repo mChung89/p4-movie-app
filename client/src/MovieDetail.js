@@ -27,6 +27,7 @@ function MovieDetail({ user }) {
 
   useEffect(() => {
     const url = `https://imdb-api.com/API/YouTubeTrailer/${process.env.REACT_APP_IMDB_KEY}/${movie.imdb_id}`;
+    console.log(url)
     fetch(url, { method: "GET", redirect: "follow" })
       .then((res) => res.json())
       .then((data) => setTrailer(data.videoId));
@@ -35,6 +36,8 @@ function MovieDetail({ user }) {
   const similarMovies = movie?.similar?.results?.map((movie) => (
     <MiniMovieCard key={movie.id} movie={movie} />
   ));
+
+  console.log(user)
 
   function addToList() {
     fetch("/movies", {
@@ -48,11 +51,12 @@ function MovieDetail({ user }) {
         description: movie.overview,
         rating: movie.vote_average,
         image: movie.poster_path,
+        username: user.username
       }),
     })
       .then((res) => res.json())
       .then((moviedata) => {
-        fetch("http://127.0.0.1:3000/reviews", {
+        fetch("/reviews", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -65,35 +69,21 @@ function MovieDetail({ user }) {
           }),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => {
+            setSnackBar("show");
+            closeSnack()});
       });
+  }
+
+  function closeSnack () {
+    setTimeout(() => setSnackBar(null),2700)
   }
 
   const genres = movie?.genres?.map((genre) => genre.name).join(" ");
 
-  // // Horizontal Scrolling
-  // const elRef = useRef();
-  // function useHorizontalScroll() {
-  //   useEffect(() => {
-  //     const el = elRef.current;
-  //     if (el) {
-  //       const onWheel = e => {
-  //         if (e.deltaY === 0) return;
-  //         e.preventDefault();
-  //         el.scrollTo({
-  //           left: el.scrollLeft + e.deltaY,
-  //           behavior: "smooth"
-  //         });
-  //       };
-  //       el.addEventListener("wheel", onWheel);
-  //       return () => el.removeEventListener("wheel", onWheel);
-  //     }
-  //   }, []);
-  //   return elRef;
-  // }
-  // const scrollRef = useHorizontalScroll()
-
   const [modal, setModalOpen] = useState(false);
+  const [snackBar, setSnackBar] = useState(null)
+  const watchListButton = <button onClick={addToList}>Add to Watchlist</button>
 
   return (
     <>
@@ -102,6 +92,7 @@ function MovieDetail({ user }) {
           <TrailerVideo trailer={trailer} setModalOpen={setModalOpen} />
         ) : null}
       </div>
+      <div id="snackbar" className={snackBar}>Added to Watchlist</div>
       <div className="detail-wrap">
         <div id="movie-page-left">
           <div id="detail-image-box">
@@ -110,6 +101,7 @@ function MovieDetail({ user }) {
               alt="img"
             ></img>
           </div>
+          <div />
         </div>
         <div id="movie-page-right">
           <div id="movie-details">
@@ -128,8 +120,8 @@ function MovieDetail({ user }) {
             </div>
           </div>
           <div id="movie-detail-buttons">
-            <button onClick={addToList}>Add to Watchlist</button>
             <button onClick={() => setModalOpen(!modal)}>Trailer</button>
+            {user ? watchListButton : null}
           </div>
           <div id="similar-movie-text">
             <h4>Similar movies:</h4>

@@ -8,8 +8,7 @@ function Watchlist({user}) {
         fetch('/movies')
         .then(res => res.json())
         .then(data => setWatchlist(data))
-    },[])
-console.log(watchlist)
+    },[user])
 
 const watchlistmovies = watchlist.map(list => {
   if(list){

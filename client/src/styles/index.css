@@ -6,7 +6,8 @@ body {
 
 .grid-wrapper {
     height: 100%;
-    display: grid
+    display: grid;
+    background-color: black
 }
 
 html {

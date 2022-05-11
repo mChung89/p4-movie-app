@@ -27,7 +27,6 @@ function App() {
         })
     },[])
 
-    console.log(user)
   return (
 
     <>
@@ -39,8 +38,8 @@ function App() {
         <Route path="/" element={<Home setUser={setUser} user={user}/>} />
         <Route exact path="movies" element={<MoviePage />}/>
         <Route exact path="/movies/:movieId" element={<MovieDetail user={user}/>}></Route>
-        <Route path='/watchlist' element={<Watchlist user={user}/>}/>
-        <Route path="*" element={<h1>404 No page found!</h1>} />
+        {user ? <Route path='/watchlist' element={<Watchlist user={user}/>}/> : null}
+        <Route path="*" element={<h1 style={{color:'white'}}>404 No page found!</h1>} />
         <Route path='login' element={<Login setUser={setUser}/>}/>
       </Routes>
       </div>

@@ -7,8 +7,9 @@ import { useNavigate } from 'react-router-dom'
 
 
 function Login({setUser}) {
-
+  const [errors, setErrors] = useState(null)
   const [newUser, setNewUser] = useState(true);
+  console.log(errors)
   return (
     <div className="login">
       <div>
@@ -18,8 +19,11 @@ function Login({setUser}) {
 
     
 
-        {newUser ? <UserLogin setUser={setUser}/> : <UserCreate setUser={setUser}/>}
-        <button onClick={() => setNewUser((prev) => !prev)}>
+        {newUser ? <UserLogin setUser={setUser} errors={errors} setErrors={setErrors}/> : <UserCreate errors={errors} setErrors={setErrors} setUser={setUser}/>}
+        <button onClick={() => {
+          setNewUser((prev) => !prev);
+          setErrors(null)}
+        }>
 
           {newUser ? "New User? Create an Account" : "Already a User? Login!" }
         </button>

@@ -17,6 +17,12 @@ function UserLogin({setUser}){
     setFormData({...formData, [key]: value})
   }
 
+  function authorized (data) {
+    setUser(data);
+    setErrors(null);
+    navigate('/')
+  }
+
   function handleSubmit (e) {
     e.preventDefault()
     fetch(`/login`, {
@@ -28,12 +34,9 @@ function UserLogin({setUser}){
       body: JSON.stringify(formData)
     })
     .then(res => res.ok ? res.json()
-    .then(data => {
-      setUser(data)
-      setErrors("")
-      navigate('/')
-    }) : res.json().then(setErrors)
+    .then(data => authorized(data)) : res.json().then(setErrors).catch(err => console.log(err))
   )}
+
 
   return (
       <>
@@ -48,7 +51,7 @@ function UserLogin({setUser}){
         <input name="password" onChange={handleChange} value={formData.password} id="password">
         </input>
         <br></br>
-        {errors ? <p>{errors.errors}</p> : null}
+        {errors ? <p>{errors.error}</p> : null}
         <button type="submit">Submit
         </button>
       </form>
