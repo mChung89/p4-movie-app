@@ -4,12 +4,10 @@ import UserLogin from "./UserLogin";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 
-
-
 function Login({setUser}) {
   const [errors, setErrors] = useState(null)
   const [newUser, setNewUser] = useState(true);
-  console.log(errors)
+  const navigate = useNavigate()
   return (
     <div className="login">
       <div>
@@ -19,7 +17,7 @@ function Login({setUser}) {
 
     
 
-        {newUser ? <UserLogin setUser={setUser} errors={errors} setErrors={setErrors}/> : <UserCreate errors={errors} setErrors={setErrors} setUser={setUser}/>}
+        {newUser ? <UserLogin navigate={navigate} setUser={setUser} errors={errors} setErrors={setErrors}/> : <UserCreate navigate={navigate} errors={errors} setErrors={setErrors} setUser={setUser}/>}
         <button onClick={() => {
           setNewUser((prev) => !prev);
           setErrors(null)}

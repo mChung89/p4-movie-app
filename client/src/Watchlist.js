@@ -4,22 +4,24 @@ import WatchlistCard from './WatchlistCard'
 
 function Watchlist({user}) {
     const [watchlist, setWatchlist] = useState([])
+
     useEffect(()=> {
-        fetch('/movies')
+        fetch('/reviews')
         .then(res => res.json())
         .then(data => setWatchlist(data))
-    },[user])
+    },[])
+    console.log(watchlist)
 
 const watchlistmovies = watchlist.map(list => {
   if(list){
-    return <WatchlistCard key={list.id} movie={list} signInUser={user} setWatchlist={setWatchlist}/>
+    return <WatchlistCard watchlist={watchlist} key={list.id} id={list.id} movie={list.movie} signInUser={user} setWatchlist={setWatchlist} review={list.review}/>
   } else {
     return null
   }    
         })
     
   return (
-    <div>
+    <div style={{backgroundColor: 'white'}}>
         {watchlistmovies}
     </div>
   )

@@ -7,6 +7,7 @@ import TrailerVideo from "./TrailerVideo";
 function MovieDetail({ user }) {
   const [movie, setMovie] = useState({});
   const [trailer, setTrailer] = useState("");
+  const [reviews, setReviews] = useState([])
 
   let params = useParams();
 
@@ -22,25 +23,28 @@ function MovieDetail({ user }) {
       }
     )
       .then((res) => res.json())
-      .then((data) => setMovie(data));
+      .then(data => {
+        setMovie(data)
+      fetch(`/reviews/${data.imdb_id}`)
+      .then(res => res.json())
+      .then(data => {
+        setReviews(data)})})
+        // .catch(setReviews([]))
   }, [params.movieId]);
 
   useEffect(() => {
     const url = `https://imdb-api.com/API/YouTubeTrailer/${process.env.REACT_APP_IMDB_KEY}/${movie.imdb_id}`;
-    console.log(url)
-    fetch(url, { method: "GET", redirect: "follow" })
-      .then((res) => res.json())
-      .then((data) => setTrailer(data.videoId));
+    // fetch(url, { method: "GET", redirect: "follow" })
+    //   .then((res) => res.json())
+    //   .then((data) => setTrailer(data.videoId));
   }, [movie]);
 
   const similarMovies = movie?.similar?.results?.map((movie) => (
     <MiniMovieCard key={movie.id} movie={movie} />
   ));
 
-  console.log(user)
-
   function addToList() {
-    fetch("/movies", {
+    fetch("/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,28 +55,14 @@ function MovieDetail({ user }) {
         description: movie.overview,
         rating: movie.vote_average,
         image: movie.poster_path,
-        username: user.username
+        user_id: user.id,
+        imdb: movie.imdb_id
       }),
     })
       .then((res) => res.json())
       .then((moviedata) => {
-        fetch("/reviews", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            user_id: user.id,
-            movie_id: moviedata.id,
-            rating: null,
-            review: "",
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
             setSnackBar("show");
             closeSnack()});
-      });
   }
 
   function closeSnack () {
@@ -84,13 +74,14 @@ function MovieDetail({ user }) {
   const [modal, setModalOpen] = useState(false);
   const [snackBar, setSnackBar] = useState(null)
   const watchListButton = <button onClick={addToList}>Add to Watchlist</button>
-
+  console.log(reviews)
+  // const renderedReviews = reviews?.map(review => review.review)
   return (
     <>
       <div className="trailer-modal">
-        {modal ? (
+        {/* {modal ? (
           <TrailerVideo trailer={trailer} setModalOpen={setModalOpen} />
-        ) : null}
+        ) : null} */}
       </div>
       <div id="snackbar" className={snackBar}>Added to Watchlist</div>
       <div className="detail-wrap">
@@ -127,6 +118,9 @@ function MovieDetail({ user }) {
             <h4>Similar movies:</h4>
           </div>
           <div id="similar-movies">{similarMovies}</div>
+        </div>
+        <div id='movie-reviews'>
+          {/* <h5>{renderedReviews}</h5> */}
         </div>
       </div>
     </>

@@ -4,7 +4,6 @@ import './styles/card.css'
 function MovieCard ({ movie }) {
     const { title, poster_path, vote_average } = movie
     const navigate = useNavigate()
-    console.log(movie)
 
     function handleClick () {
         navigate(`/movies/${movie.id}`)
