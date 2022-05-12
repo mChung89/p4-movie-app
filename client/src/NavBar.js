@@ -1,5 +1,5 @@
 import './styles/navbar.css'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { NavLink, Link, Outlet, useNavigate } from 'react-router-dom'
 function NavBar ({ user,setUser }) {
   const navigate = useNavigate()
   
@@ -11,14 +11,14 @@ function NavBar ({ user,setUser }) {
         navigate('/')})}
     
 
-  const watchList = <Link to='/Watchlist'>Watchlist</Link>
+  const watchList = <NavLink to='/Watchlist'>Watchlist</NavLink>
   
-  const logButton = user ? <a className="login-button" onClick={handleClick}>Log out</a> : <Link className="login-button" to="/login">Login</Link>
+  const logButton = user ? <span className="login-button" onClick={handleClick}>Log out</span> : <Link className="login-button" to="/login">Login</Link>
     return (
       <div className="nav">
         <nav className="topnav wave-container">
-          <Link to="/">Home</Link>
-          <Link to="/movies">Movies</Link>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/movies">Movies</NavLink>
           {user ? watchList : null}
           {logButton}
         </nav>

@@ -2,7 +2,8 @@
     height: 26.2vh;
     padding-right: 1em;
     padding-left: 1em;
-    border-right: solid white 1px
+    /* border-right: solid 0.5px black; */
+    border-left: solid 0.5px black
 }
 
 .mini-card img:hover {

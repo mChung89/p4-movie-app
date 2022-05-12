@@ -20,8 +20,9 @@
 }
 
 .topnav a.active {
-    background-color: #04AA6D;
+    background-color: crimson;
     color: white;
+    text-decoration: underline;
 }
 
 .nav {
@@ -34,5 +35,12 @@
 
 nav .login-button {
     float: right;
-    padding-right: 40px
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    color: white
+}
+nav .login-button:hover {
+    background-color: #ddd;
+    color: black;
 }

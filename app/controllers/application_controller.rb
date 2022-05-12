@@ -4,7 +4,6 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid,with: :render_invalid
 
   private
-
   
   def render_not_found
     render json:{errors: "#{controller_name.classify} not found"},status: :not_found

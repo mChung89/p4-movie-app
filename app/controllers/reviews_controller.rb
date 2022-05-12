@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     end
     
     def show
-        movie = Movie.find_by(imdb: params[:id])
+        movie = Movie.find_by!(imdb: params[:id])
         render json: movie.reviews, status: :ok
     end
 

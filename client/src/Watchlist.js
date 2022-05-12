@@ -1,10 +1,12 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
 import WatchListCard from './WatchlistCard'
+import './styles/card.css'
 
 function Watchlist({user}) {
     const [watchlist, setWatchlist] = useState([])
     const [errors, setErrors] = useState(null)
+    const [currentReviews, setCurrentReview] = useState([])
 
     function processError (error) {
       setErrors(error)
@@ -18,11 +20,11 @@ function Watchlist({user}) {
               res.json().then(data => processError(data))
             }
         })
-    },[watchlist])
+    },[currentReviews])
 
     let watchListMovies
     if (!errors) {
-      watchListMovies = watchlist.map(list => <WatchListCard watchlist={watchlist} key={list.id} id={list.id} movie={list.movie} signInUser={user} setWatchlist={setWatchlist} review={list.review}/>)}
+      watchListMovies = watchlist.map(list => <WatchListCard setCurrentReview={setCurrentReview} watchlist={watchlist} key={list.id} id={list.id} movie={list.movie} signInUser={user} setWatchlist={setWatchlist} review={list.review} myRating={list.rating}/>)}
     
     if (errors) {
     console.log("Errors are:", errors)
@@ -30,7 +32,7 @@ function Watchlist({user}) {
     }
     
   return (
-    <div style={{backgroundColor: 'white'}}>
+    <div className="cards">
         {watchListMovies}
     </div>
   )

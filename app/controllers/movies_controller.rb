@@ -2,13 +2,6 @@ class MoviesController < ApplicationController
     def index
         user = User.find_by(id: session[:user_id])
         render json: user.movies.uniq, status: :ok
-
-        # if user.movies.length == 0
-        #     render json: {error:"This watchlist is empty"}
-        # else 
-        #     render json: user.movies.uniq, status: :ok
-        # end
-        
     end
 
     def create

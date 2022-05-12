@@ -2,8 +2,7 @@ div .detail-wrap {
     width: 100%;
     display: flex;
     flex-direction: row;
-    height: 100vh;
-    background-color: rgba(243, 220, 224, 0.908)
+    background-color: rgba(243, 220, 224)
 }
 
 #movie-page-left {
@@ -11,6 +10,15 @@ div .detail-wrap {
     padding-left: 1vw;
     padding-top: 1.5vh;
     padding-right: 2vw
+}
+
+#movie-reviews-list span {
+    font-size: 1.3rem
+}
+
+#movie-review {
+    height: 29vh;
+    overflow-y: scroll
 }
 #movie-page-right {
     display:flex;
@@ -51,11 +59,12 @@ div #detail-image-box img {
 
 #movie-details-left {
     float: left;
-    width: 30vw;
+    width: 50%;
 }
 
 #movie-details-right {
     float: right;
+    width: 50%
 }
 
 div #movie-details {
@@ -66,17 +75,25 @@ div #movie-details {
     margin-top: 3vh;
     border-top: solid 1px black
 }
+
+#similar-movie-box {
+    display: flex;
+    background-color: rgba(243, 220, 224);
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
 div #similar-movies {
     display: inline-flex;
     white-space: nowrap;
     flex-direction: row;
     overflow-x: scroll;
-    overflow-y:hidden;
-    height: 28.3vh;
-    width: 60vw;
-    border: solid black 1px;
+    overflow-y: hidden;
+    width: 95vw;
     align-items: flex-end;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(243, 220, 224);
 }
 
 #movie-detail-buttons {
@@ -146,3 +163,12 @@ div #similar-movies {
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
   }
+
+  .middle-left {
+      width: 50%;
+  }
+
+  .middle-right {
+      width: 50%
+  }
+  

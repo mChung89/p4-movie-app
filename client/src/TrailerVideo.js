@@ -1,6 +1,17 @@
 import "./styles/video.css";
-function TrailerVideo({ trailer, setModalOpen }) {
+import { useEffect, useState } from 'react'
+function TrailerVideo({ setModalOpen, movie }) {
+  const [trailer, setTrailer] = useState("");
+  useEffect(() => {
+    const url = `https://imdb-api.com/API/YouTubeTrailer/${process.env.REACT_APP_IMDB_KEY}/${movie.imdb_id}`;
+    fetch(url, { method: "GET", redirect: "follow" })
+      .then((res) => res.json())
+      .then((data) => setTrailer(data.videoId));
+      console.log('fetching video')
+  }, [movie]);
+
   return (
+
     <>
       <div
         className="modal-background-mask"

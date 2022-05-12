@@ -1,18 +1,18 @@
-.watchlist img {
-    height:350px ;
-}
+.card {
+  margin: 2em;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  width: 400px;
+  border: solid 2px;
+  flex-direction: column;
+  background-color: rgba(255,255,255,0.7);
 
-.watchlist{
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
-    
 }
 
 .flip-card {
     background-color: transparent;
-    width: 300px;
-    height: 300px;
+    height: 600px;
     perspective: 1000px;
     align-items: center;
   }
@@ -27,12 +27,8 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   }
   
-  .flip-card:hover .flip-card-inner {
+  .flip-card-click .flip-card-inner {
     transform: rotateY(180deg);
-  }
-  .flip-card-front img{
-    width:300px;
-    height:300px;
   }
   
   .flip-card-front, .flip-card-back {
@@ -49,7 +45,7 @@
   }
   
   .flip-card-back {
-    background-color: #2980b9;
-    color: white;
+    background-color: #ebaf1a;
+    color: black;
     transform: rotateY(180deg);
   }

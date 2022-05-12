@@ -21,7 +21,7 @@ function UserCreate({ setUser, setErrors, errors, navigate }) {
       setPasswordErr(["Confirmation password does not match"])
       return
     }
-    fetch(`http://localhost:3000/users`, {
+    fetch(`/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",    
@@ -54,13 +54,13 @@ function UserCreate({ setUser, setErrors, errors, navigate }) {
           id="password"
         ></input>
         <br></br>
-        <label>_confirm Password</label>
+        <label>Confirm Password</label>
         <br></br>
         <input
           name="password_confirmation"
           onChange={handleChange}
           value={formData.password_confirmation}
-          id="password-_confirmation"
+          id="password_confirmation"
           type='password'
         ></input>
         <br></br>
