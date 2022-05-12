@@ -1,28 +1,37 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
-import WatchlistCard from './WatchlistCard'
-import "./styles/watchlistcard.css";
+import WatchListCard from './WatchlistCard'
 
 function Watchlist({user}) {
     const [watchlist, setWatchlist] = useState([])
-    const [error, seterror] = useState(null)
-    useEffect(()=> {
-        fetch('/movies')
-        .then(res => res.json())
-        .then(data => setWatchlist(data))
-    },[user])
+    const [errors, setErrors] = useState(null)
 
-const watchlistmovies = watchlist.map(list => {
-  if(list){
-    return <WatchlistCard key={list.id} movie={list} signInUser={user} setWatchlist={setWatchlist}/>
-  } else {
-    return error
-  }    
+    function processError (error) {
+      setErrors(error)
+    }
+    useEffect(()=> {
+        fetch('/reviews')
+        .then(res => {
+          if (res.ok) {
+            res.json().then(data => setWatchlist(data))
+            } else {
+              res.json().then(data => processError(data))
+            }
         })
+    },[watchlist])
+
+    let watchListMovies
+    if (!errors) {
+      watchListMovies = watchlist.map(list => <WatchListCard watchlist={watchlist} key={list.id} id={list.id} movie={list.movie} signInUser={user} setWatchlist={setWatchlist} review={list.review}/>)}
+    
+    if (errors) {
+    console.log("Errors are:", errors)
+      watchListMovies = errors.error
+    }
     
   return (
-    <div className="watchlist">
-        {watchlistmovies}
+    <div style={{backgroundColor: 'white'}}>
+        {watchListMovies}
     </div>
   )
 }

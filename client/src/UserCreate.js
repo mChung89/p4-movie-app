@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-function UserCreate({ setUser, setErrors, errors }) {
+function UserCreate({ setUser, setErrors, errors, navigate }) {
   const defaultState = {
     username: "",
     password: "",
-    passwordConfirmation: ""
+    password_confirmation: ""
   };
   const [formData, setFormData] = useState(defaultState);
   const [passwordErr, setPasswordErr] = useState(null)
@@ -17,7 +17,7 @@ function UserCreate({ setUser, setErrors, errors }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if(formData.password !== formData.passwordConfirmation) {
+    if(formData.password !== formData.password_confirmation) {
       setPasswordErr(["Confirmation password does not match"])
       return
     }
@@ -29,7 +29,9 @@ function UserCreate({ setUser, setErrors, errors }) {
       body: JSON.stringify(formData),
     })
     .then(res => res.ok ? res.json()
-    .then(setUser) : res.json().then(setErrors));
+    .then(data => {
+      setUser(data);
+      navigate('/')}) : res.json().then(setErrors));
   }
   return (
     <>
@@ -52,13 +54,13 @@ function UserCreate({ setUser, setErrors, errors }) {
           id="password"
         ></input>
         <br></br>
-        <label>Confirm Password</label>
+        <label>_confirm Password</label>
         <br></br>
         <input
-          name="passwordConfirmation"
+          name="password_confirmation"
           onChange={handleChange}
-          value={formData.passwordConfirmation}
-          id="password-confirmation"
+          value={formData.password_confirmation}
+          id="password-_confirmation"
           type='password'
         ></input>
         <br></br>

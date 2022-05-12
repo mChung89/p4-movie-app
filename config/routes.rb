@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :reviews, only: [:index,:create,:update,:destroy]
+  resources :reviews, only: [:index, :show, :create,:update,:destroy]
   resources :users, only: [:index, :create]
 
-  resources :movies
+  resources :movies, only: [:create]
   post '/login', to: 'sessions#create'
   get '/me', to: 'users#show'
   delete '/logout', to: 'sessions#destroy'

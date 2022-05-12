@@ -4,9 +4,10 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid,with: :render_invalid
 
   private
+
   
   def render_not_found
-    render json:{error: "#{controller_name.classify} not found"},status: :not_found
+    render json:{errors: "#{controller_name.classify} not found"},status: :not_found
   end
 
   def render_invalid(error_obj)
@@ -14,6 +15,11 @@ class ApplicationController < ActionController::API
   end
   
   def movie_params
-    params.permit(:title, :release_date, :description, :rating, :image, :username)
+    params.permit(:title, :release_date, :description, :rating, :image, :imdb)
   end
+
+  def review_params
+    params.permit(:user_id, :movie_id, :review, :rating, :id)
+  end
+
 end
