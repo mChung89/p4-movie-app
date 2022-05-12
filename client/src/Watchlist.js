@@ -1,9 +1,11 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
 import WatchlistCard from './WatchlistCard'
+import "./styles/watchlistcard.css";
 
 function Watchlist({user}) {
     const [watchlist, setWatchlist] = useState([])
+    const [error, seterror] = useState(null)
     useEffect(()=> {
         fetch('/movies')
         .then(res => res.json())
@@ -15,12 +17,12 @@ const watchlistmovies = watchlist.map(list => {
   if(list){
     return <WatchlistCard key={list.id} movie={list} signInUser={user} setWatchlist={setWatchlist}/>
   } else {
-    return null
+    return error
   }    
         })
     
   return (
-    <div>
+    <div className="watchlist">
         {watchlistmovies}
     </div>
   )
