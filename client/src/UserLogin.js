@@ -40,8 +40,8 @@ function UserLogin({setUser}){
 
   return (
       <>
-      <h3>This is the login Page</h3>
-      <form onSubmit={handleSubmit}>
+      <h3>Please log in</h3>
+      <form className='login-form' onSubmit={handleSubmit}>
         <label>Username</label>
         <br></br>
         <input name="username" onChange={handleChange} value={formData.username}></input>
@@ -51,9 +51,10 @@ function UserLogin({setUser}){
         <input name="password" onChange={handleChange} value={formData.password} id="password">
         </input>
         <br></br>
+        <div className="errors">
         {errors ? <p>{errors.error}</p> : null}
-        <button type="submit">Submit
-        </button>
+        </div>
+        <button type="submit">Submit</button>
       </form>
       </>
   );

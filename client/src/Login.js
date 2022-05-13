@@ -11,9 +11,6 @@ function Login({ setUser }) {
   return (
     <div id="login-background">
       <div className="login">
-        <div>
-          <h1>Welcome! Please sign in</h1>
-        </div>
         <div className="login-form">
           {newUser ? (
             <UserLogin
@@ -31,6 +28,7 @@ function Login({ setUser }) {
             />
           )}
           <button
+            id='toggle-login'
             onClick={() => {
               setNewUser((prev) => !prev);
               setErrors(null);

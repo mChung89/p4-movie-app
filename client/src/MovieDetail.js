@@ -73,11 +73,19 @@ function MovieDetail({ user }) {
   const [snackBar, setSnackBar] = useState(null);
   const watchListButton = <button onClick={addToList}>Add to Watchlist</button>;
 
+  function starGenerator (number) {
+    const stars = []
+    for(let i = 0; i < number; i++){
+      stars.push("★")
+    }
+    return stars
+  }
+
   let renderedReviews;
   if (!errors) {
     renderedReviews = reviews?.map((review) => (
       <p key={review.id}>
-        <span>{review.user.username}</span> said: {review.review}
+        {starGenerator(review.rating).join("")}<span>{review.user.username}</span> said: {review.review}
       </p>
     ));
   }

@@ -172,3 +172,9 @@ div #similar-movies {
       width: 50%
   }
   
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="detail-wrap"] {
+      width: 100%;
+    }
+  }

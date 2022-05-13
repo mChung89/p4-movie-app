@@ -10,6 +10,7 @@ function UserCreate({ setUser, setErrors, errors, navigate }) {
   const [passwordErr, setPasswordErr] = useState(null)
 
   function handleChange(e) {
+    setPasswordErr(null)
     const key = e.target.name;
     const value = e.target.value;
     setFormData({ ...formData, [key]: value });
@@ -35,8 +36,8 @@ function UserCreate({ setUser, setErrors, errors, navigate }) {
   }
   return (
     <>
-      <h3>This is the create page</h3>
-      <form onSubmit={handleSubmit}>
+      <h3>Sign up a New Account</h3>
+      <form className="login-form" onSubmit={handleSubmit}>
         <label>Username</label>
         <br></br>
         <input
@@ -64,8 +65,10 @@ function UserCreate({ setUser, setErrors, errors, navigate }) {
           type='password'
         ></input>
         <br></br>
+        <div className="errors">
         {passwordErr ? <p>{passwordErr}</p> : null}
         {errors ? <p>{errors.errors}</p> : null}
+        </div>
         <button type="submit">Submit</button>
       </form>
     </>

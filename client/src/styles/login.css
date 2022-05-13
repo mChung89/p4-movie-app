@@ -10,19 +10,63 @@ div.login {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background-color: rgba(0,0,0,0.5)
+    background-color: rgba(0,0,0,0.5);
+    display: inline-flex;
+    flex-direction: column;
 }
 
+form label {
+    font-size: 1.5rem
+}
 form input {
     align-items: center;
     width: 60%;
-    height: 1.4rem;
+    height: 1.5rem;
     padding: 5px, 5px
+}
+
+.login-form div{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form button {
+    margin-top: 2em;
+    background-color: crimson; /* Green */
+    border: solid black 1px;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.2rem
+}
+
+.login-form button:hover {
+        cursor: pointer;
+        background-color: white;
+        color: black
 }
 
 #login-background {
     background-image: url("https://cdn.cnn.com/cnnnext/dam/assets/141007105341-cnn-films-background-full-169.jpg");
     height: 100vh;
     width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover
 }
 
+#toggle-login {
+    float: bottom
+}
+
+.errors {
+    max-height: 4vh;
+    height: 4vh
+}
+
+.errors p {
+    color: red;
+    font-size: 1.5rem;
+    font-weight: 200
+}
