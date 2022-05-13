@@ -27,6 +27,7 @@ function Login({ setUser }) {
               setUser={setUser}
             />
           )}
+        </div>
           <button
             id='toggle-login'
             onClick={() => {
@@ -36,7 +37,6 @@ function Login({ setUser }) {
           >
             {newUser ? "New User? Create an Account" : "Already a User? Login!"}
           </button>
-        </div>
       </div>
     </div>
   );

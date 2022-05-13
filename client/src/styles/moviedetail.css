@@ -178,3 +178,7 @@ div #similar-movies {
       width: 100%;
     }
   }
+
+  #star {
+      color: rgb(210, 210, 12)
+  }

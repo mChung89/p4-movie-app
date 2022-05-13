@@ -44,7 +44,7 @@ function WatchlistCard({myRating, movie, setCurrentReview, setWatchlist, review,
           <div className={`${flipcard ? 'flip-card-click' : null} flip-card card`}>
               <div className="flip-card-inner">
                   <div className="flip-card-front" >
-                      <img onClick={handleClick} src={`https://image.tmdb.org/t/p/w500/${movie.image}`} alt="Avatar" />
+                      <img onClick={handleClick} src={`https://image.tmdb.org/t/p/w500/${movie.image}`} alt="Avatar" onClick={()=> setFlipCard(true)} />
                   </div>
                   <div className="flip-card-back" >
                       <h1>{movie.title}</h1>
@@ -60,9 +60,9 @@ function WatchlistCard({myRating, movie, setCurrentReview, setWatchlist, review,
                             {ratingOption}
                           </select>
                           <br></br>
-                          <button type='submit'>Submit Review</button>
+                          <button className="watchlist-button "type='submit'>Submit Review</button>
                       </form>
-                      <button onClick={handleClick}>Flip back</button>
+                      <button className="watchlist-button" onClick={handleClick}>Flip back</button>
 
                   </div>
               </div>

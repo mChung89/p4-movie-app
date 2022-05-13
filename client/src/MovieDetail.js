@@ -73,21 +73,24 @@ function MovieDetail({ user }) {
   const [snackBar, setSnackBar] = useState(null);
   const watchListButton = <button onClick={addToList}>Add to Watchlist</button>;
 
-  function starGenerator (number) {
-    const stars = []
-    for(let i = 0; i < number; i++){
-      stars.push("★")
-    }
-    return stars
-  }
 
-  let renderedReviews;
+  // renderedReviews = reviews?.map((review) => (
+  //   <p key={review.id}>
+  //     {review.rating} / 10 <span id="star">★</span>  <span>{review.user.username}</span> said: {review.review}
+  //   </p>
+  // ));
+
+  let renderedReviews
   if (!errors) {
-    renderedReviews = reviews?.map((review) => (
-      <p key={review.id}>
-        {starGenerator(review.rating).join("")}<span>{review.user.username}</span> said: {review.review}
-      </p>
-    ));
+      renderedReviews = reviews?.map(review => {
+    if (review.rating) {
+      return <p key={review.id}>
+      {review.rating} / 10 <span id="star">★</span>  <span>{review.user.username}</span> said: {review.review}
+    </p>
+    } else {
+      return (<p key={review.id}><span>{review.user.username}</span> said: {review.review}</p>)
+    }
+  })
   }
   return (
     <>

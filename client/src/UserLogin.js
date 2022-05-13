@@ -40,15 +40,16 @@ function UserLogin({setUser}){
 
   return (
       <>
-      <h3>Please log in</h3>
+      <h1>Please log in</h1>
+      <div className="login-module">
       <form className='login-form' onSubmit={handleSubmit}>
         <label>Username</label>
         <br></br>
-        <input name="username" onChange={handleChange} value={formData.username}></input>
+        <input className="text-field" name="username" onChange={handleChange} value={formData.username}></input>
         <br></br>
         <label>Password</label>
         <br></br>
-        <input name="password" onChange={handleChange} value={formData.password} id="password">
+        <input className="text-field" name="password" onChange={handleChange} value={formData.password} id="password">
         </input>
         <br></br>
         <div className="errors">
@@ -56,6 +57,7 @@ function UserLogin({setUser}){
         </div>
         <button type="submit">Submit</button>
       </form>
+      </div>
       </>
   );
 }
