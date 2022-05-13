@@ -2,6 +2,7 @@ import NavBar from "./NavBar";
 import { Routes, Route } from "react-router-dom";
 import MoviePage from "./MoviePage";
 import MovieDetail from "./MovieDetail";
+import About from './About'
 
 import Watchlist from "./Watchlist";
 
@@ -41,6 +42,7 @@ function App() {
         {user ? <Route path='/watchlist' element={<Watchlist user={user}/>}/> : null}
         <Route path="*" element={<h1 style={{color:'white'}}>404 No page found!</h1>} />
         <Route path='login' element={<Login setUser={setUser}/>}/>
+        <Route path='about' element={<About />} />
       </Routes>
       </div>
      

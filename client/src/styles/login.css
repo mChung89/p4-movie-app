@@ -74,3 +74,11 @@ form input {
     padding: 10px;
     box-shadow: 0 0 7px 0 gray;
 }
+
+.login .profile {
+    color: black;
+}
+
+.login a {
+    text-decoration: none;
+}
