@@ -34,6 +34,7 @@ function MovieDetail({ user }) {
             : res.json().then(setErrors)
         );
       });
+      return () => {console.log('useEffect cleanup')}
   }, [params.movieId]);
 
   const similarMovies = movie?.similar?.results?.map((movie) => (
@@ -72,13 +73,6 @@ function MovieDetail({ user }) {
   const [modal, setModalOpen] = useState(false);
   const [snackBar, setSnackBar] = useState(null);
   const watchListButton = <button onClick={addToList}>Add to Watchlist</button>;
-
-
-  // renderedReviews = reviews?.map((review) => (
-  //   <p key={review.id}>
-  //     {review.rating} / 10 <span id="star">★</span>  <span>{review.user.username}</span> said: {review.review}
-  //   </p>
-  // ));
 
   let renderedReviews
   if (!errors) {

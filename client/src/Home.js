@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 export default function Home ({ user, setUser }) {
   useEffect(() => {
     fetch("/me").then((res) =>
-      res.ok ? res.json().then(setUser) : console.log("not ok")
+      res.ok ? res.json().then(setUser) : console.log("Not logged in")
     );
   }, [setUser]);
 
