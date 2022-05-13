@@ -10,7 +10,7 @@ export default function Home ({ user, setUser }) {
   return (
     <section className="hero">
       <div className="content">
-        <h2>{user ? `Welcome back ${user.username}` : `Welcome !`}</h2>
+        <h2>{user ? `Welcome back ${user.username}` : `Welcome to Movie Rater !`}</h2>
       </div>
       <div className="waves"></div>
     </section>
