@@ -11,6 +11,9 @@ function About() {
         <a href={githubUrl + 'mChung89'}className="profile"><img src={octocat.default} alt="mChung89"/>/mChung89</a>
         <br />
         <a href={githubUrl + 'kevawnw'} className="profile"><img src={octocat.default} alt="kevawnw"/>/kevawnw</a>
+        <br />
+        <br />
+        <p>Brought to you by the makers of Ramen Rater</p>
       </div>
     </div>
   );

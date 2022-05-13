@@ -82,3 +82,7 @@ form input {
 .login a {
     text-decoration: none;
 }
+
+.login p {
+    color: black
+}

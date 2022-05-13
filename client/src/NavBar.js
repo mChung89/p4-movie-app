@@ -20,6 +20,7 @@ function NavBar ({ user,setUser }) {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/movies">Movies</NavLink>
           {user ? watchList : null}
+          <NavLink to="/about">About</NavLink>
           {logButton}
         </nav>
         <Outlet />
